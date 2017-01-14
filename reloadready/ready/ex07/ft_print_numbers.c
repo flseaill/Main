@@ -6,11 +6,9 @@
 /*   By: flseaill <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/11 17:24:02 by flseaill          #+#    #+#             */
-/*   Updated: 2017/01/13 17:43:21 by flseaill         ###   ########.fr       */
+/*   Updated: 2017/01/14 15:33:56 by flseaill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-void	ft_putchar(char c);
 
 void	ft_print_numbers(void)
 {
