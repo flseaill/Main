@@ -3,13 +3,12 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: flseaill <marvin@42.fr>                    +#+  +:+       +#+         #
+#    By: florianseailles <florianseailles@student.42.fr>+#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/01/30 06:17:17 by flseaill          #+#    #+#              #
-#    Updated: 2017/02/15 13:04:06 by flseaill         ###   ########.fr        #
+#    Updated: 2017/03/01 17:38:12 by florianseailles  ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
-
 NAME = libft.a
 SRC += srcs/ft_atoi.c
 SRC += srcs/ft_bzero.c
@@ -26,6 +25,7 @@ SRC += srcs/ft_isupper.c
 SRC += srcs/ft_itoa.c
 SRC += srcs/ft_memalloc.c
 SRC += srcs/ft_memchr.c
+SRC += srcs/ft_memcmp.c
 SRC += srcs/ft_memcpy.c
 SRC += srcs/ft_memccpy.c
 SRC += srcs/ft_memdel.c
@@ -68,6 +68,7 @@ SRC += srcs/ft_strsub.c
 SRC += srcs/ft_strtrim.c
 SRC += srcs/ft_tolower.c
 SRC += srcs/ft_toupper.c
+SRC += srcs/ft_lenwords.c
 INC = includes/libft.h
 SRCO = $(SRC:.c=.o)
 CC = gcc

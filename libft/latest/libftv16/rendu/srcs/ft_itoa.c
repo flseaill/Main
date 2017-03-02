@@ -3,13 +3,12 @@
 /*                                                        :::      ::::::::   */
 /*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: flseaill <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: florianseailles <florianseailles@student.42.fr>+#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/25 17:23:45 by flseaill          #+#    #+#             */
-/*   Updated: 2017/01/30 07:00:03 by flseaill         ###   ########.fr       */
+/*   Updated: 2017/03/01 22:15:16 by florianseailles  ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 #include "../includes/libft.h"
 
 static int	ft_neg(int n)
@@ -45,3 +44,4 @@ char		*ft_itoa(int n)
 		*--num = '-';
 	return (num);
 }
+
