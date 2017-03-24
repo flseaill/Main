@@ -16,7 +16,7 @@ void	ft_putnbr_fd(int n, int fd)
 {
 	unsigned int nb;
 
-	nb = (unsigned int)n;
+	nb = (unsigned char)n;
 	if (n < 0)
 	{
 		write(fd, "-", 1);
