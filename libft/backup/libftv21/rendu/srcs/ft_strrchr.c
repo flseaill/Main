@@ -6,11 +6,13 @@
 /*   By: flseaill <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/15 12:13:47 by flseaill          #+#    #+#             */
-/*   Updated: 2017/03/12 17:25:51 by flseaill         ###   ########.fr       */
+/*   Updated: 2017/03/24 17:28:37 by flseaill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/libft.h"
+#include <stdio.h>
+#include <string.h>
 
 char	*ft_strrchr(const char *s, int c)
 {
@@ -19,8 +21,8 @@ char	*ft_strrchr(const char *s, int c)
 	int		last_c;
 
 	i = 0;
-	j = ft_strlen(s) + 1;
-	last_c = 0;
+	j = ft_strlen(s);
+	last_c = -1;
 	while (j != 0)
 	{
 		if (s[i] == c)
@@ -28,7 +30,13 @@ char	*ft_strrchr(const char *s, int c)
 		i++;
 		j--;
 	}
-	if (last_c == 0)
+	if (last_c == -1)
 		return (NULL);
 	return ((char *)&s[last_c]);
+}
+
+int		main(void)
+{
+printf("%s\n", ft_strrchr("a\0b\0cd0\0f", 'c'));
+printf("%s\n", strrchr("a\0b\0cd0\0f",'c'));
 }

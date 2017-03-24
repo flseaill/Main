@@ -6,7 +6,7 @@
 /*   By: flseaill <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/15 12:38:01 by flseaill          #+#    #+#             */
-/*   Updated: 2017/03/18 20:02:19 by flseaill         ###   ########.fr       */
+/*   Updated: 2017/03/24 18:04:07 by flseaill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,8 @@
 
 void	*ft_memmove(void *dst, const void *src, size_t len)
 {
-//	char *tmp;
 	size_t i;
 	
-//	tmp = (char *)src;
 	i = 0;
 	if (src < dst)
 	{
@@ -38,10 +36,3 @@ void	*ft_memmove(void *dst, const void *src, size_t len)
 	}
 	return (dst);
 }
-/*
-	if (!(tmp = (char *)malloc(sizeof(char) * len)))
-		return (NULL);
-	ft_memcpy((char *)tmp, src, len);
-	ft_memcpy(dst, (char *)tmp, len);
-	return (dst);
-}*/

@@ -6,7 +6,7 @@
 /*   By: flseaill <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/15 12:40:28 by flseaill          #+#    #+#             */
-/*   Updated: 2017/02/15 13:16:38 by flseaill         ###   ########.fr       */
+/*   Updated: 2017/03/24 17:47:56 by flseaill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@ void	ft_putnbr_fd(int n, int fd)
 {
 	unsigned int nb;
 
+	if (fd < 0 || fd > 256)
+		return;
 	nb = (unsigned int)n;
 	if (n < 0)
 	{
