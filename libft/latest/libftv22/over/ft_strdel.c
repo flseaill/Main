@@ -1,23 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_itoa.c                                          :+:      :+:    :+:   */
+/*   ft_strdel.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: flseaill <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/03/05 19:19:07 by flseaill          #+#    #+#             */
-/*   Updated: 2017/03/05 19:21:20 by flseaill         ###   ########.fr       */
+/*   Created: 2017/01/21 21:33:11 by flseaill          #+#    #+#             */
+/*   Updated: 2017/01/30 08:09:46 by flseaill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-char	*ft_itoa(int n)
-{
-	char *str;
-	int len;
+#include "../includes/libft.h"
 
-	len = ft_intlen(n) + 1;
-	if (!(str = (char *)malloc(sizeof(char) * len)))
-		return (NULL);
-	str = 
-	return (str);
+void	ft_strdel(char **as)
+{
+	if (as != NULL && *as != NULL)
+	{
+		free(*as);
+		*as = NULL;
+	}
 }

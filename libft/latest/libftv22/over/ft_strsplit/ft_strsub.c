@@ -1,23 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_itoa.c                                          :+:      :+:    :+:   */
+/*   ft_strsub.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: flseaill <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/03/05 19:19:07 by flseaill          #+#    #+#             */
-/*   Updated: 2017/03/05 19:21:20 by flseaill         ###   ########.fr       */
+/*   Created: 2017/01/21 22:55:02 by flseaill          #+#    #+#             */
+/*   Updated: 2017/02/15 15:57:14 by flseaill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-char	*ft_itoa(int n)
-{
-	char *str;
-	int len;
+#include "../includes/libft.h"
 
-	len = ft_intlen(n) + 1;
-	if (!(str = (char *)malloc(sizeof(char) * len)))
+char	*ft_strsub(char const *s, unsigned int start, size_t len)
+{
+	unsigned int	i;
+	char			*str;
+
+	i = start;
+	if (!s)
 		return (NULL);
-	str = 
+	str = (char *)(malloc(sizeof(char) * len - start));
+	while (i < len)
+	{
+		str[i] = s[i];
+		i++;
+	}
 	return (str);
 }

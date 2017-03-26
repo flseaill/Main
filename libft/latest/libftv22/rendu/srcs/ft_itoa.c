@@ -12,12 +12,41 @@
 
 char	*ft_itoa(int n)
 {
-	char *str;
-	int len;
+	size_t len;
+	int i;
+	int nb;
+	char *nbr;
 
-	len = ft_intlen(n) + 1;
-	if (!(str = (char *)malloc(sizeof(char) * len)))
+	i = 0;
+	nb = -1;
+	while (n = n / 10 != 0)
+		len++;
+	if (!(nbr = (char *)malloc(sizeof(char) * len))
 		return (NULL);
-	str = 
-	return (str);
+	if (n < 0)
+		printf("%d\n", -1);
+	else
+		printf("%zu\n", len);
+	return ("fin");
 }
+
+int		main(void)
+{
+	ft_itoa();
+}
+
+/*	if (n < 0)
+	{
+		nbr[i++] = '-';
+	}
+	else
+	{
+		nbr[i] = ;
+	}
+	if (
+	while ()
+	{
+	
+	}
+	return (nbr);
+}*/

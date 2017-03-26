@@ -1,23 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_itoa.c                                          :+:      :+:    :+:   */
+/*   ft_strchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: flseaill <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/03/05 19:19:07 by flseaill          #+#    #+#             */
-/*   Updated: 2017/03/05 19:21:20 by flseaill         ###   ########.fr       */
+/*   Created: 2017/02/15 12:12:41 by flseaill          #+#    #+#             */
+/*   Updated: 2017/03/12 17:27:04 by flseaill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-char	*ft_itoa(int n)
-{
-	char *str;
-	int len;
+#include "../includes/libft.h"
 
-	len = ft_intlen(n) + 1;
-	if (!(str = (char *)malloc(sizeof(char) * len)))
-		return (NULL);
-	str = 
-	return (str);
+char	*ft_strchr(const char *s, int c)
+{
+	size_t	i;
+	int		j;
+
+	i = 0;
+	j = ft_strlen(s) + 1;
+	while (j > 0)
+	{
+		if (s[i] == c)
+			return ((char *)&s[i]);
+		i++;
+		j--;
+	}
+	return (NULL);
 }

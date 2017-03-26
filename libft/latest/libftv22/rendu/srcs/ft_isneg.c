@@ -1,23 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_itoa.c                                          :+:      :+:    :+:   */
+/*   ft_isneg.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: flseaill <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/03/05 19:19:07 by flseaill          #+#    #+#             */
-/*   Updated: 2017/03/05 19:21:20 by flseaill         ###   ########.fr       */
+/*   Created: 2017/02/15 12:11:22 by flseaill          #+#    #+#             */
+/*   Updated: 2017/02/15 12:11:28 by flseaill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-char	*ft_itoa(int n)
-{
-	char *str;
-	int len;
+#include "../includes/libft.h"
 
-	len = ft_intlen(n) + 1;
-	if (!(str = (char *)malloc(sizeof(char) * len)))
-		return (NULL);
-	str = 
-	return (str);
+int		ft_isneg(int n)
+{
+	if (n < 0)
+		return (1);
+	return (0);
 }

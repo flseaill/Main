@@ -1,23 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_itoa.c                                          :+:      :+:    :+:   */
+/*   ft_strnstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: flseaill <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/03/05 19:19:07 by flseaill          #+#    #+#             */
-/*   Updated: 2017/03/05 19:21:20 by flseaill         ###   ########.fr       */
+/*   Created: 2017/02/15 16:09:28 by flseaill          #+#    #+#             */
+/*   Updated: 2017/03/12 20:09:16 by flseaill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-char	*ft_itoa(int n)
-{
-	char *str;
-	int len;
+#include "../includes/libft.h"
 
-	len = ft_intlen(n) + 1;
-	if (!(str = (char *)malloc(sizeof(char) * len)))
-		return (NULL);
-	str = 
-	return (str);
+char	*ft_strnstr(const char *s1, const char *s2, size_t n)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	j = 0;
+	if (!s2[i])
+		return (&*(char *)s1);
+	while (s1[i])
+	{
+		while (s1[i + j] == s2[j] && (ft_strlen(s2) - j - 1) < n)
+		{
+			if (!s2[j + 1])
+				return ((char *)&s1[i]);
+			j++;
+			n--;
+		}
+		j = 0;
+		i++;
+	}
+	return (NULL);
 }

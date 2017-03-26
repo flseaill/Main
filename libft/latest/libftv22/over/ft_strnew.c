@@ -1,23 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_itoa.c                                          :+:      :+:    :+:   */
+/*   ft_strnew.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: flseaill <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/03/05 19:19:07 by flseaill          #+#    #+#             */
-/*   Updated: 2017/03/05 19:21:20 by flseaill         ###   ########.fr       */
+/*   Created: 2017/01/30 06:48:33 by flseaill          #+#    #+#             */
+/*   Updated: 2017/01/30 06:55:31 by flseaill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-char	*ft_itoa(int n)
+char	*strnew(size_t size)
 {
+	size_t i;
 	char *str;
-	int len;
 
-	len = ft_intlen(n) + 1;
-	if (!(str = (char *)malloc(sizeof(char) * len)))
+	i = 0;
+	str = (char *)(malloc(sizeof(char) * size + 1));
+	if (!str)
 		return (NULL);
-	str = 
+	while (i != size)
+	{
+		str[i] = '\0';
+		i++;
+	}
+	str[i] = '\0';
 	return (str);
 }

@@ -1,23 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_itoa.c                                          :+:      :+:    :+:   */
+/*   ft_strcat.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: flseaill <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/03/05 19:19:07 by flseaill          #+#    #+#             */
-/*   Updated: 2017/03/05 19:21:20 by flseaill         ###   ########.fr       */
+/*   Created: 2017/01/30 04:58:58 by flseaill          #+#    #+#             */
+/*   Updated: 2017/01/30 09:36:23 by flseaill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-char	*ft_itoa(int n)
+#include "../includes/libft.h"
+
+char	*ft_strcat(char *dst, char *src)
 {
-	char *str;
+	int i;
 	int len;
 
-	len = ft_intlen(n) + 1;
-	if (!(str = (char *)malloc(sizeof(char) * len)))
-		return (NULL);
-	str = 
-	return (str);
+	i = 0;
+	len = ft_strlen(dst);
+	while (src && src[i])
+	{
+		dst[len + i] = src[i];
+		i++;
+	}
+	dst[len + i] = '\0';
+	return (dst);
 }

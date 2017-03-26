@@ -1,23 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_itoa.c                                          :+:      :+:    :+:   */
+/*   ft_memalloc.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: flseaill <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/03/05 19:19:07 by flseaill          #+#    #+#             */
-/*   Updated: 2017/03/05 19:21:20 by flseaill         ###   ########.fr       */
+/*   Created: 2017/01/21 19:55:10 by flseaill          #+#    #+#             */
+/*   Updated: 2017/01/30 08:14:56 by flseaill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-char	*ft_itoa(int n)
-{
-	char *str;
-	int len;
+#include "../includes/libft.h"
 
-	len = ft_intlen(n) + 1;
-	if (!(str = (char *)malloc(sizeof(char) * len)))
+void	*ft_memalloc(size_t size)
+{
+	size_t	i;
+	int		*mem;
+
+	i = 0;
+	mem = (int *)(malloc(sizeof(int) * size + 1));
+	if (!mem)
 		return (NULL);
-	str = 
-	return (str);
+	while (i != size)
+	{
+		mem[i] = 0;
+		i++;
+	}
+	return (mem);
 }
