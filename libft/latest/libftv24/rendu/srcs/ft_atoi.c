@@ -1,40 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strtrim.c                                       :+:      :+:    :+:   */
+/*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: flseaill <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/03/05 17:48:48 by flseaill          #+#    #+#             */
-/*   Updated: 2017/03/05 17:48:59 by flseaill         ###   ########.fr       */
+/*   Created: 2017/02/15 12:02:25 by flseaill          #+#    #+#             */
+/*   Updated: 2017/03/12 20:19:02 by flseaill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/libft.h"
 
-char	static *ft_strtrim(char const *s)
+int		ft_atoi(const char *str)
 {
-	size_t	i;
-	size_t	j;
-	char	*cpy;
-	char	*str;
+	int	neg;
+	int	nb;
 
-	i = 0;
-	j = 0;
-	str = (char *)malloc(sizeof(char) * ft_strlen(s) + 1);
-	str = ft_strcpy(str, s);
-	cpy = (char *)malloc(sizeof(char) * ft_strlen(s));
-	while (str[i] && cpy)
+	neg = 1;
+	nb = 0;
+	while (*str == ' ' || *str == '\t' || *str == '\n' ||
+			*str == '\v' || *str == '\f' || *str == '\r')
+		str++;
+	if (*str == '-' || *str == '+')
 	{
-		if (str[i] == ' ' || str[i] == '\t' || str[i] == '\n')
-			i++;
-		else
-		{
-			cpy[j] = str[i];
-			j++;
-		}
-		i++;
+		if (*str == '-')
+			neg = -1;
+		str++;
 	}
-	cpy[i] = '\0';
-	return (ft_strdup(cpy));
+	while (*str >= '0' && *str <= '9' && *str)
+	{
+		if (nb == 0)
+			nb = *str - '0';
+		else
+			nb = nb * 10 + *str - '0';
+		str++;
+	}
+	return (neg * nb);
 }

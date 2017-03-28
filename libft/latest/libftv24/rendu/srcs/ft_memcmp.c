@@ -1,40 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strtrim.c                                       :+:      :+:    :+:   */
+/*   ft_memcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: flseaill <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/03/05 17:48:48 by flseaill          #+#    #+#             */
-/*   Updated: 2017/03/05 17:48:59 by flseaill         ###   ########.fr       */
+/*   Created: 2017/02/15 12:35:51 by flseaill          #+#    #+#             */
+/*   Updated: 2017/02/15 13:36:26 by flseaill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/libft.h"
 
-char	static *ft_strtrim(char const *s)
+int		ft_memcmp(const void *s1, const void *s2, size_t n)
 {
-	size_t	i;
-	size_t	j;
-	char	*cpy;
-	char	*str;
+	size_t			i;
+	unsigned char	*s1b;
+	unsigned char	*s2b;
 
+	s1b = (unsigned char *)s1;
+	s2b = (unsigned char *)s2;
 	i = 0;
-	j = 0;
-	str = (char *)malloc(sizeof(char) * ft_strlen(s) + 1);
-	str = ft_strcpy(str, s);
-	cpy = (char *)malloc(sizeof(char) * ft_strlen(s));
-	while (str[i] && cpy)
-	{
-		if (str[i] == ' ' || str[i] == '\t' || str[i] == '\n')
-			i++;
-		else
-		{
-			cpy[j] = str[i];
-			j++;
-		}
+	if (n == 0)
+		return (0);
+	while (i < n && s1b[i] == s2b[i])
 		i++;
-	}
-	cpy[i] = '\0';
-	return (ft_strdup(cpy));
+	if (i == n)
+		i--;
+	return (s1b[i] - s2b[i]);
 }

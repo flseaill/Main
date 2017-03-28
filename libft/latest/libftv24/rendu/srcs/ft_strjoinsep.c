@@ -1,40 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strtrim.c                                       :+:      :+:    :+:   */
+/*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: flseaill <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/03/05 17:48:48 by flseaill          #+#    #+#             */
-/*   Updated: 2017/03/05 17:48:59 by flseaill         ###   ########.fr       */
+/*   Created: 2017/01/30 04:58:28 by flseaill          #+#    #+#             */
+/*   Updated: 2017/02/15 16:06:32 by flseaill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/libft.h"
 
-char	static *ft_strtrim(char const *s)
+char	*ft_strjoinsep(const char *s1, const char *s2, char sep)
 {
+	char	*concat;
 	size_t	i;
-	size_t	j;
-	char	*cpy;
-	char	*str;
+	size_t	len;
 
 	i = 0;
-	j = 0;
-	str = (char *)malloc(sizeof(char) * ft_strlen(s) + 1);
-	str = ft_strcpy(str, s);
-	cpy = (char *)malloc(sizeof(char) * ft_strlen(s));
-	while (str[i] && cpy)
+	len = ft_strlen((char *)s1) + ft_strlen((char *)s2);
+	concat = (char *)malloc(sizeof(char) * len + 2);
+	if (!concat)
+		return (NULL);
+	while (s1 && s1[i])
 	{
-		if (str[i] == ' ' || str[i] == '\t' || str[i] == '\n')
-			i++;
-		else
-		{
-			cpy[j] = str[i];
-			j++;
-		}
+		concat[i] = s1[i];
 		i++;
 	}
-	cpy[i] = '\0';
-	return (ft_strdup(cpy));
+	concat[i] = sep;
+	i++;
+	i = 0;
+	while (s2 && s2[i])
+	{
+		concat[i + ft_strlen((char *)s1) + 1] = s2[i];
+		i++;
+	}
+	concat[i + ft_strlen((char *)s1) + 1] = '\0';
+	return (concat);
 }

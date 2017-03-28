@@ -1,40 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strtrim.c                                       :+:      :+:    :+:   */
+/*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: flseaill <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/03/05 17:48:48 by flseaill          #+#    #+#             */
-/*   Updated: 2017/03/05 17:48:59 by flseaill         ###   ########.fr       */
+/*   Created: 2017/02/15 12:38:01 by flseaill          #+#    #+#             */
+/*   Updated: 2017/03/24 18:04:07 by flseaill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/libft.h"
 
-char	static *ft_strtrim(char const *s)
+void	*ft_memmove(void *dst, const void *src, size_t len)
 {
-	size_t	i;
-	size_t	j;
-	char	*cpy;
-	char	*str;
+	size_t i;
 
 	i = 0;
-	j = 0;
-	str = (char *)malloc(sizeof(char) * ft_strlen(s) + 1);
-	str = ft_strcpy(str, s);
-	cpy = (char *)malloc(sizeof(char) * ft_strlen(s));
-	while (str[i] && cpy)
+	if (src > dst)
 	{
-		if (str[i] == ' ' || str[i] == '\t' || str[i] == '\n')
-			i++;
-		else
+		while (i < len)
 		{
-			cpy[j] = str[i];
-			j++;
+			((unsigned char *)dst)[i] = ((unsigned char *)src)[i];
+			i++;
 		}
-		i++;
 	}
-	cpy[i] = '\0';
-	return (ft_strdup(cpy));
+	else
+	{
+		while (len--)
+			((unsigned char *)dst)[len] = ((unsigned char *)src)[len];
+	}
+	return (dst);
 }

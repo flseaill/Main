@@ -1,30 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strsub.c                                        :+:      :+:    :+:   */
+/*   ft_toupper.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: flseaill <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/01/21 22:55:02 by flseaill          #+#    #+#             */
-/*   Updated: 2017/02/15 15:57:14 by flseaill         ###   ########.fr       */
+/*   Created: 2017/01/20 18:51:38 by flseaill          #+#    #+#             */
+/*   Updated: 2017/01/30 05:35:27 by flseaill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/libft.h"
+#include "libft.h"
 
-char	*ft_strsub(char const *s, unsigned int start, size_t len)
+int		ft_toupper(int c)
 {
-	unsigned int	i;
-	char			*str;
-
-	i = start;
-	if (!s)
-		return (NULL);
-	str = (char *)(malloc(sizeof(char) * len - start));
-	while (i < len)
-	{
-		str[i] = s[i];
-		i++;
-	}
-	return (str);
+	if (c >= 97 && c <= 122)
+		return (c - 32);
+	return (c);
 }

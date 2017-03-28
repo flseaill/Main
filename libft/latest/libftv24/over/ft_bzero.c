@@ -1,40 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strtrim.c                                       :+:      :+:    :+:   */
+/*   ft_bzero.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: flseaill <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/03/05 17:48:48 by flseaill          #+#    #+#             */
-/*   Updated: 2017/03/05 17:48:59 by flseaill         ###   ########.fr       */
+/*   Created: 2017/01/21 21:28:18 by flseaill          #+#    #+#             */
+/*   Updated: 2017/01/25 17:32:54 by flseaill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/libft.h"
+#include "libft.h"
 
-char	static *ft_strtrim(char const *s)
+void	*ft_bzero(void *s, size_t n)
 {
 	size_t	i;
-	size_t	j;
-	char	*cpy;
 	char	*str;
 
 	i = 0;
-	j = 0;
-	str = (char *)malloc(sizeof(char) * ft_strlen(s) + 1);
-	str = ft_strcpy(str, s);
-	cpy = (char *)malloc(sizeof(char) * ft_strlen(s));
-	while (str[i] && cpy)
+	if (n != 0)
 	{
-		if (str[i] == ' ' || str[i] == '\t' || str[i] == '\n')
-			i++;
-		else
+		str = (char *)s;
+		while (i < n)
 		{
-			cpy[j] = str[i];
-			j++;
+			str[i] = '\0';
+			i++;
 		}
-		i++;
 	}
-	cpy[i] = '\0';
-	return (ft_strdup(cpy));
 }

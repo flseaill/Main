@@ -1,40 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strtrim.c                                       :+:      :+:    :+:   */
+/*   ft_strcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: flseaill <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/03/05 17:48:48 by flseaill          #+#    #+#             */
-/*   Updated: 2017/03/05 17:48:59 by flseaill         ###   ########.fr       */
+/*   Created: 2017/01/30 02:15:35 by flseaill          #+#    #+#             */
+/*   Updated: 2017/02/15 16:29:12 by flseaill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
+#include <stdio.h>
+#include <string.h>
 #include "../includes/libft.h"
 
-char	static *ft_strtrim(char const *s)
+char	*ft_strcpy(char *dst, const char *src)
 {
-	size_t	i;
-	size_t	j;
-	char	*cpy;
-	char	*str;
+	int i;
 
 	i = 0;
-	j = 0;
-	str = (char *)malloc(sizeof(char) * ft_strlen(s) + 1);
-	str = ft_strcpy(str, s);
-	cpy = (char *)malloc(sizeof(char) * ft_strlen(s));
-	while (str[i] && cpy)
+	while (src && src[i])
 	{
-		if (str[i] == ' ' || str[i] == '\t' || str[i] == '\n')
-			i++;
-		else
-		{
-			cpy[j] = str[i];
-			j++;
-		}
+		dst[i] = src[i];
 		i++;
 	}
-	cpy[i] = '\0';
-	return (ft_strdup(cpy));
+	dst[i] = '\0';
+	return (dst);
+}
+
+int		main(void)
+{
+	const char src[] = "Ceci est un test";
+	char dst[] = "                ";
+
+	ft_putstr(ft_strcpy(dst, src));
+	return (0);
 }

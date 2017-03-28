@@ -11,8 +11,9 @@
 /* ************************************************************************** */
 
 #include "../includes/libft.h"
+#include <stdio.h>
 
-char	static *ft_strtrim(char const *s)
+char	*ft_strtrim(char const *s)
 {
 	size_t	i;
 	size_t	j;
@@ -37,4 +38,11 @@ char	static *ft_strtrim(char const *s)
 	}
 	cpy[i] = '\0';
 	return (ft_strdup(cpy));
+}
+
+int		main(void)
+{
+	const char test[] = "		a   b cd		ef\n ghij klm";
+	printf("%s", ft_strtrim(test));
+	//ft_strtrim(test);
 }

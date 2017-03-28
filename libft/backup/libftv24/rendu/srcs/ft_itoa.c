@@ -1,40 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strtrim.c                                       :+:      :+:    :+:   */
+/*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: flseaill <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/03/05 17:48:48 by flseaill          #+#    #+#             */
-/*   Updated: 2017/03/05 17:48:59 by flseaill         ###   ########.fr       */
+/*   Created: 2017/03/05 19:19:07 by flseaill          #+#    #+#             */
+/*   Updated: 2017/03/05 19:21:20 by flseaill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/libft.h"
 
-char	static *ft_strtrim(char const *s)
+char	*ft_itoa(int n)
 {
-	size_t	i;
-	size_t	j;
-	char	*cpy;
-	char	*str;
+	char *rst;
+	int len;
+	unsigned int nb;
 
-	i = 0;
-	j = 0;
-	str = (char *)malloc(sizeof(char) * ft_strlen(s) + 1);
-	str = ft_strcpy(str, s);
-	cpy = (char *)malloc(sizeof(char) * ft_strlen(s));
-	while (str[i] && cpy)
+	nb = n;
+	len = ft_intlen(n);
+	if (n < 0)
 	{
-		if (str[i] == ' ' || str[i] == '\t' || str[i] == '\n')
-			i++;
-		else
-		{
-			cpy[j] = str[i];
-			j++;
-		}
-		i++;
+		nb = -n;
+		len++;
 	}
-	cpy[i] = '\0';
-	return (ft_strdup(cpy));
+	if (!(rst = (char *)malloc(sizeof(char) * (len + 1))))
+		return (NULL);
+	rst[len--] = '\0';
+	if (n == 0)
+		rst[len] = '0';
+	while (nb >= 1)
+	{
+		rst[len--] = (nb % 10) + '0';
+		nb = nb / 10;
+	}
+	if (n < 0)
+		rst[len] = '-';
+	return (rst);
 }

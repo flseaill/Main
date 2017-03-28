@@ -6,35 +6,53 @@
 /*   By: flseaill <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/05 17:48:48 by flseaill          #+#    #+#             */
-/*   Updated: 2017/03/05 17:48:59 by flseaill         ###   ########.fr       */
+/*   Updated: 2017/03/24 17:22:25 by flseaill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/libft.h"
 
-char	static *ft_strtrim(char const *s)
+int		static ft_strlen_trim(const char *s)
 {
 	size_t	i;
-	size_t	j;
-	char	*cpy;
-	char	*str;
+	size_t	a;
 
 	i = 0;
-	j = 0;
-	str = (char *)malloc(sizeof(char) * ft_strlen(s) + 1);
-	str = ft_strcpy(str, s);
-	cpy = (char *)malloc(sizeof(char) * ft_strlen(s));
-	while (str[i] && cpy)
-	{
-		if (str[i] == ' ' || str[i] == '\t' || str[i] == '\n')
-			i++;
-		else
-		{
-			cpy[j] = str[i];
-			j++;
-		}
+	a = 0;
+	while (s[i] && ft_isspace(s[i]))
 		i++;
+	if (i == ft_strlen(s))
+		return (0);
+	while (s[a])
+		a++;
+	a--;
+	while (s[a] && ft_isspace(s[a]))
+		a--;
+	return (a - i + 1);
+}
+
+char	*ft_strtrim(const char *s)
+{
+	char	*rst;
+	size_t	i;
+	size_t	len;
+
+	if (!s)
+		return (NULL);
+	len = ft_strlen_trim(s);
+	if (len == 0 || *s == '\0')
+		return ("");
+	if (!(rst = (char *)malloc(sizeof(char) * (len + 1))))
+		return (NULL);
+	while (ft_isspace(*s))
+		s++;
+	i = 0;
+	while (i < len)
+	{
+		rst[i] = *s;
+		i++;
+		s++;
 	}
-	cpy[i] = '\0';
-	return (ft_strdup(cpy));
+	rst[i] = '\0';
+	return (rst);
 }

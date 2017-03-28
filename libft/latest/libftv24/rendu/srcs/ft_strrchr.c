@@ -1,40 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strtrim.c                                       :+:      :+:    :+:   */
+/*   ft_strrchr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: flseaill <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/03/05 17:48:48 by flseaill          #+#    #+#             */
-/*   Updated: 2017/03/05 17:48:59 by flseaill         ###   ########.fr       */
+/*   Created: 2017/02/15 12:13:47 by flseaill          #+#    #+#             */
+/*   Updated: 2017/03/24 17:28:37 by flseaill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/libft.h"
 
-char	static *ft_strtrim(char const *s)
+char	*ft_strrchr(const char *s, int c)
 {
 	size_t	i;
-	size_t	j;
-	char	*cpy;
-	char	*str;
+	int		j;
+	int		last_c;
 
 	i = 0;
-	j = 0;
-	str = (char *)malloc(sizeof(char) * ft_strlen(s) + 1);
-	str = ft_strcpy(str, s);
-	cpy = (char *)malloc(sizeof(char) * ft_strlen(s));
-	while (str[i] && cpy)
+	j = ft_strlen(s) + 1;
+	last_c = -1;
+	while (i < (size_t)j)
 	{
-		if (str[i] == ' ' || str[i] == '\t' || str[i] == '\n')
-			i++;
-		else
-		{
-			cpy[j] = str[i];
-			j++;
-		}
+		if (s[i] == c)
+			last_c = i;
 		i++;
 	}
-	cpy[i] = '\0';
-	return (ft_strdup(cpy));
+	if (last_c == -1)
+		return (NULL);
+	return ((char *)&s[last_c]);
 }

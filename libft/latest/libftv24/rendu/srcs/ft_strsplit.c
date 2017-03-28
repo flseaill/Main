@@ -1,40 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strtrim.c                                       :+:      :+:    :+:   */
+/*   ft_strsplit.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: flseaill <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/03/05 17:48:48 by flseaill          #+#    #+#             */
-/*   Updated: 2017/03/05 17:48:59 by flseaill         ###   ########.fr       */
+/*   Created: 2017/02/15 15:34:17 by flseaill          #+#    #+#             */
+/*   Updated: 2017/02/15 16:04:09 by flseaill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/libft.h"
 
-char	static *ft_strtrim(char const *s)
+char	**ft_strsplit(const char *s, char c)
 {
 	size_t	i;
 	size_t	j;
-	char	*cpy;
-	char	*str;
+	char	**tab;
 
+	if (!s || !c)
+		return (NULL);
+	tab = (char **)malloc(sizeof(char *) * (ft_countwords(s, c) + 1));
+	if (!tab)
+		return (NULL);
 	i = 0;
 	j = 0;
-	str = (char *)malloc(sizeof(char) * ft_strlen(s) + 1);
-	str = ft_strcpy(str, s);
-	cpy = (char *)malloc(sizeof(char) * ft_strlen(s));
-	while (str[i] && cpy)
+	while ((int)j < ft_countwords(s, c))
 	{
-		if (str[i] == ' ' || str[i] == '\t' || str[i] == '\n')
+		while (s[i] == c)
 			i++;
-		else
+		if (s[i] != c)
 		{
-			cpy[j] = str[i];
+			tab[j] = ft_strsub(&s[i], 0, ft_lenwords(s, c, (j + 1)));
+			i += (ft_lenwords(s, c, (j + 1)) + 1);
 			j++;
 		}
-		i++;
 	}
-	cpy[i] = '\0';
-	return (ft_strdup(cpy));
+	tab[j] = NULL;
+	return (tab);
 }

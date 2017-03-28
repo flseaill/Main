@@ -1,40 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strtrim.c                                       :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: flseaill <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/03/05 17:48:48 by flseaill          #+#    #+#             */
-/*   Updated: 2017/03/05 17:48:59 by flseaill         ###   ########.fr       */
+/*   Created: 2017/01/30 09:38:30 by flseaill          #+#    #+#             */
+/*   Updated: 2017/02/15 16:25:29 by flseaill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/libft.h"
 
-char	static *ft_strtrim(char const *s)
+char	*ft_strdup(const char *s1)
 {
-	size_t	i;
-	size_t	j;
-	char	*cpy;
-	char	*str;
+	int		i;
+	char	*s2;
 
 	i = 0;
-	j = 0;
-	str = (char *)malloc(sizeof(char) * ft_strlen(s) + 1);
-	str = ft_strcpy(str, s);
-	cpy = (char *)malloc(sizeof(char) * ft_strlen(s));
-	while (str[i] && cpy)
+	s2 = (char *)(malloc(sizeof(char) * ft_strlen((char *)s1) + 1));
+	if (!s1)
+		return (NULL);
+	if (!s2)
+		return (NULL);
+	while (s1 && s1[i])
 	{
-		if (str[i] == ' ' || str[i] == '\t' || str[i] == '\n')
-			i++;
-		else
-		{
-			cpy[j] = str[i];
-			j++;
-		}
+		s2[i] = s1[i];
 		i++;
 	}
-	cpy[i] = '\0';
-	return (ft_strdup(cpy));
+	s2[i] = '\0';
+	return (s2);
+}
+
+int		main(void)
+{
+	const char s1[] = "Ceci est un test";
+
+	ft_putstr(ft_strdup(s1));
+	return (0);
 }

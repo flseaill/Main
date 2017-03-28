@@ -1,40 +1,50 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strtrim.c                                       :+:      :+:    :+:   */
+/*   ft_lenwords.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: flseaill <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/03/05 17:48:48 by flseaill          #+#    #+#             */
-/*   Updated: 2017/03/05 17:48:59 by flseaill         ###   ########.fr       */
+/*   Created: 2017/02/15 16:03:34 by flseaill          #+#    #+#             */
+/*   Updated: 2017/02/15 16:04:41 by flseaill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/libft.h"
+#include <stdio.h>
 
-char	static *ft_strtrim(char const *s)
+int		ft_lenwords(const char *str, char c, int word)
 {
 	size_t	i;
 	size_t	j;
-	char	*cpy;
-	char	*str;
 
 	i = 0;
-	j = 0;
-	str = (char *)malloc(sizeof(char) * ft_strlen(s) + 1);
-	str = ft_strcpy(str, s);
-	cpy = (char *)malloc(sizeof(char) * ft_strlen(s));
-	while (str[i] && cpy)
+	while (word != 0)
 	{
-		if (str[i] == ' ' || str[i] == '\t' || str[i] == '\n')
-			i++;
-		else
+		j = 0;
+		if (str[i] == c)
 		{
-			cpy[j] = str[i];
-			j++;
+			while (str[i] == c)
+				i++;
 		}
-		i++;
+		if (str[i] != c)
+		{
+			while (str[i] != c)
+			{
+				i++;
+				j++;
+			}
+		}
+		word--;
 	}
-	cpy[i] = '\0';
-	return (ft_strdup(cpy));
+	ft_putnbr(j);
+	return (j);
+}
+
+int		main(void)
+{
+	const char str[] = "a b c d e f g h i j k l m n o p q r s t u v w x y z";
+	char c = ' ';
+	int word = 26;
+	ft_lenwords(str, c, word);
 }

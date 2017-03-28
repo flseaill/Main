@@ -1,30 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strsub.c                                        :+:      :+:    :+:   */
+/*   ft_putnbr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: flseaill <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/01/21 22:55:02 by flseaill          #+#    #+#             */
-/*   Updated: 2017/02/15 15:57:14 by flseaill         ###   ########.fr       */
+/*   Created: 2017/01/20 20:06:49 by flseaill          #+#    #+#             */
+/*   Updated: 2017/01/20 20:23:34 by flseaill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/libft.h"
+#include "libft.h"
 
-char	*ft_strsub(char const *s, unsigned int start, size_t len)
+void	ft_putnbr(int n)
 {
-	unsigned int	i;
-	char			*str;
+	unsigned int nb;
 
-	i = start;
-	if (!s)
-		return (NULL);
-	str = (char *)(malloc(sizeof(char) * len - start));
-	while (i < len)
+	nb = (unsigned int)n;
+	if (n < 0)
 	{
-		str[i] = s[i];
-		i++;
+		write(1, "-", 1);
+		nb = n * -1;
 	}
-	return (str);
+	if (nb > 9)
+	{
+		ft_putnbr(nb / 10);
+		ft_putnbr(nb % 10);
+	}
+	else
+	{
+		nb += '0';
+		write(1, &nb, 1);
+	}
 }

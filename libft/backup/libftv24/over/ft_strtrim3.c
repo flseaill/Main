@@ -6,35 +6,31 @@
 /*   By: flseaill <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/05 17:48:48 by flseaill          #+#    #+#             */
-/*   Updated: 2017/03/05 17:48:59 by flseaill         ###   ########.fr       */
+/*   Updated: 2017/03/24 17:22:25 by flseaill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/libft.h"
 
-char	static *ft_strtrim(char const *s)
+char	*ft_strtrim(const char *s)
 {
 	size_t	i;
 	size_t	j;
-	char	*cpy;
-	char	*str;
+	size_t	k;
+	char	*ret;
 
-	i = 0;
-	j = 0;
-	str = (char *)malloc(sizeof(char) * ft_strlen(s) + 1);
-	str = ft_strcpy(str, s);
-	cpy = (char *)malloc(sizeof(char) * ft_strlen(s));
-	while (str[i] && cpy)
-	{
-		if (str[i] == ' ' || str[i] == '\t' || str[i] == '\n')
-			i++;
-		else
-		{
-			cpy[j] = str[i];
-			j++;
-		}
+	if (!s)
+		return (NULL);
+	j = ft_strlen(s);
+	while (j != 0 && (s[--j] == ' ' || s[j] == '\n' || s[j] == '\t'))
+		i = 0;
+	while ((s[i] == ' ' || s[i] == '\n' || s[i] == '\t') && i <= j)
 		i++;
-	}
-	cpy[i] = '\0';
-	return (ft_strdup(cpy));
+	if (!(ret = (char *)malloc(sizeof(char) * (j - i + 1))))
+		return (NULL);
+	k = 0;
+	while (i <= j)
+		ret[k++] = s[i++];
+	ret[k] = '\0';
+	return (ret);
 }

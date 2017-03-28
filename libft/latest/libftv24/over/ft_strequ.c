@@ -1,40 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strtrim.c                                       :+:      :+:    :+:   */
+/*   ft_strequ.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: flseaill <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/03/05 17:48:48 by flseaill          #+#    #+#             */
-/*   Updated: 2017/03/05 17:48:59 by flseaill         ###   ########.fr       */
+/*   Created: 2017/01/21 22:37:54 by flseaill          #+#    #+#             */
+/*   Updated: 2017/02/15 16:53:23 by flseaill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/libft.h"
 
-char	static *ft_strtrim(char const *s)
+int		ft_strequ(const char *s1, const char *s2)
 {
-	size_t	i;
-	size_t	j;
-	char	*cpy;
-	char	*str;
-
-	i = 0;
-	j = 0;
-	str = (char *)malloc(sizeof(char) * ft_strlen(s) + 1);
-	str = ft_strcpy(str, s);
-	cpy = (char *)malloc(sizeof(char) * ft_strlen(s));
-	while (str[i] && cpy)
+	if (s1 && s2)
 	{
-		if (str[i] == ' ' || str[i] == '\t' || str[i] == '\n')
-			i++;
+		if (ft_strcmp(s1, s2))
+			return (0);
 		else
-		{
-			cpy[j] = str[i];
-			j++;
-		}
-		i++;
+			return (1);
 	}
-	cpy[i] = '\0';
-	return (ft_strdup(cpy));
+	return (0);
+}
+
+int		main(void)
+{
+	const char s1[] = "abcdef";
+	const char s2[] = "abcdef";
+	const char s3[] = "abcdefi";
+	ft_putstr("Doit retourner 1");
+	ft_putchar('\n');
+	ft_putnbr(ft_strequ(s1, s2));
+	ft_putchar('\n');
+	ft_putstr("Doit retourner 0");
+	ft_putchar('\n');
+	ft_putnbr(ft_strequ(s1, s3));
+	ft_putchar('\n');
+
 }

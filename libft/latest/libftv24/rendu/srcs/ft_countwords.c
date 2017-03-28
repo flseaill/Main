@@ -1,40 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strtrim.c                                       :+:      :+:    :+:   */
+/*   ft_countwords.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: flseaill <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/03/05 17:48:48 by flseaill          #+#    #+#             */
-/*   Updated: 2017/03/05 17:48:59 by flseaill         ###   ########.fr       */
+/*   Created: 2017/02/15 12:10:31 by flseaill          #+#    #+#             */
+/*   Updated: 2017/02/15 12:10:40 by flseaill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/libft.h"
 
-char	static *ft_strtrim(char const *s)
+int		ft_countwords(const char *s, char c)
 {
 	size_t	i;
-	size_t	j;
-	char	*cpy;
-	char	*str;
+	size_t	nb;
 
 	i = 0;
-	j = 0;
-	str = (char *)malloc(sizeof(char) * ft_strlen(s) + 1);
-	str = ft_strcpy(str, s);
-	cpy = (char *)malloc(sizeof(char) * ft_strlen(s));
-	while (str[i] && cpy)
+	nb = 0;
+	while (s[i])
 	{
-		if (str[i] == ' ' || str[i] == '\t' || str[i] == '\n')
-			i++;
-		else
+		if (s[i] != c)
 		{
-			cpy[j] = str[i];
-			j++;
+			nb++;
+			while (s[i] != c && s[i])
+				i++;
 		}
-		i++;
+		if (s[i])
+			i++;
 	}
-	cpy[i] = '\0';
-	return (ft_strdup(cpy));
+	return (nb);
 }
