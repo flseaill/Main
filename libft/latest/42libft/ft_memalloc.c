@@ -15,10 +15,10 @@
 void	*ft_memalloc(size_t size)
 {
 	size_t	i;
-	int		*mem;
+	int	*mem;
 
 	i = 0;
-	if (!(mem = (int *)malloc(sizeof(int) * size + 1)))
+	if (!(mem = (int *)malloc(sizeof(size_t) * size)))
 		return (NULL);
 	while (i != size)
 	{

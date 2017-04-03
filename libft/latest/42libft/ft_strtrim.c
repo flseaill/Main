@@ -12,13 +12,37 @@
 
 #include "libft.h"
 
-char	*ft_strtrim(const char *s)
+static size_t	ft_trimlen(const char *s)
+{
+	size_t i;
+	size_t j;
+	size_t k;
+
+	if (!s)
+		return (0);
+	i = 0;
+	j = ft_strlen(s);
+	while (ft_isspace(s[i]) == 1)
+		i++;
+	if (i == j)
+		return (0);
+	while (ft_isspace(s[j - 1]) == 1)
+		j--;
+	k = j - i;
+	return (k);
+}
+
+char			*ft_strtrim(const char *s)
 {
 	char	*dst;
 	int		i;
 	int		j;
+	size_t	len;
 
-	if (!s || (!(dst = (char*)malloc(sizeof(char) * (ft_strlen(s) + 2)))))
+	len = ft_trimlen(s) + 1;
+	if (len == 0)
+		return ("");
+	if (!s || (!(dst = malloc(sizeof(char) * len))))
 		return (NULL);
 	i = 0;
 	j = 0;
