@@ -6,7 +6,7 @@
 /*   By: flseaill <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/21 21:43:01 by flseaill          #+#    #+#             */
-/*   Updated: 2017/02/15 16:55:59 by flseaill         ###   ########.fr       */
+/*   Updated: 2017/04/03 12:23:48 by flseaill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,10 @@ char	*ft_strmap(char const *s, char (*f)(char))
 	size_t		i;
 	char		*str;
 
-	i = 0;
 	if (s == NULL || f == NULL)
 		return (NULL);
-	str = ft_strnew(ft_strlen(s));
-	if (!str)
+	i = 0;
+	if (!(str = ft_strnew(ft_strlen(s))))
 		return (NULL);
 	while (i < ft_strlen(s))
 	{

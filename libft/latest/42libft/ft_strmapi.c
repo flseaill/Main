@@ -6,7 +6,7 @@
 /*   By: flseaill <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/21 21:47:25 by flseaill          #+#    #+#             */
-/*   Updated: 2017/02/15 16:55:38 by flseaill         ###   ########.fr       */
+/*   Updated: 2017/04/03 12:24:54 by flseaill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,10 @@ char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 	size_t		i;
 	char		*str;
 
-	i = 0;
 	if (s == NULL || f == NULL)
 		return (NULL);
-	str = ft_strnew(ft_strlen(s));
-	if (!str)
+	i = 0;
+	if (!(str = ft_strnew(ft_strlen(s))))
 		return (NULL);
 	while (i < ft_strlen(s))
 	{
